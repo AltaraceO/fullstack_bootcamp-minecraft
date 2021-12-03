@@ -1,0 +1,84 @@
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.game-container {
+  display: flex;
+}
+
+.nav-container {
+  float: right;
+  min-width: 150px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 20vh;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(36, 34, 34);
+}
+
+.tool {
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  background-color: beige;
+}
+
+.storage {
+  height: 30px;
+  width: 30px;
+  margin-top: 50px;
+  background-color: white;
+}
+
+.gameboard-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-start {
+  height: 100%;
+  width: 100%;
+  background-color: lightsalmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board {
+  background-color: rgb(89, 177, 218);
+  width: 100vmin;
+  height: 100vmin;
+  display: none;
+  grid-template-rows: repeat(21, 1fr);
+  grid-template-columns: repeat(21, 1fr);
+}
+
+.game-board div:hover {
+  border: 0.5px lightgrey solid;
+}
+
+.green {
+  background-color: rgb(22, 119, 30);
+}
+
+.brown {
+  background-color: rgb(189, 135, 92);
+}
+
+.darkbrown {
+  background-color: rgb(110, 54, 9);
+}
+
+.gray {
+  background-color: rgb(129, 126, 123);
+}
+
+.white {
+  background-color: white;
+}
