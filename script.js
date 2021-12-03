@@ -13,100 +13,108 @@ const colors = {
   white: "white",
   blue: "blue",
   gray: "gray",
+  storage: "storage",
 };
 
-let matrix = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
-  [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
-  [0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 1],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-];
+function createGameDisplay() {
+  let matrix = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 1],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+  ];
 
-//creating the elements
-for (i = 0; i < matrix.length; i++) {
-  for (j = 0; j < matrix[i].length; j++) {
-    switch (matrix[i][j]) {
-      case 5:
-        createBox(colors.white);
-        break;
-      case 4:
-        createBox(colors.brown);
-        break;
-      case 3:
-        createBox(colors.darkbrown);
-        break;
-      case 2:
-        createBox(colors.green);
-        break;
-      case 1:
-        createBox(colors.gray);
-        break;
-      case 0:
-        createBox(colors.blue);
-        break;
+  //creating the elements
+  for (i = 0; i < matrix.length; i++) {
+    for (j = 0; j < matrix[i].length; j++) {
+      switch (matrix[i][j]) {
+        case 5:
+          createBox(colors.white);
+          break;
+        case 4:
+          createBox(colors.brown);
+          break;
+        case 3:
+          createBox(colors.darkbrown);
+          break;
+        case 2:
+          createBox(colors.green);
+          break;
+        case 1:
+          createBox(colors.gray);
+          break;
+        case 0:
+          createBox(colors.blue);
+          break;
+      }
     }
+  }
+
+  function createBox(cls) {
+    let box = document.createElement("div");
+    box.classList.add(cls);
+    gameBoard.appendChild(box);
   }
 }
 
-function createBox(cls) {
-  let box = document.createElement("div");
-  box.classList.add(cls);
-  gameBoard.appendChild(box);
-  // box.addEventListener("click", clickFunc);
+function minecraftMain() {
+  createGameDisplay();
+
+  startBtn.addEventListener("click", function (e) {
+    gameStart.style.display = "none";
+    gameBoard.style.display = "grid";
+  });
+  gameBoard.addEventListener("click", gameBoardtoStorage);
 }
+minecraftMain();
 
-// function clickFunc(e) {
-//   e.target.setAttribute("class", "colors.blue");
-//   console.log(e);
-//   console.dir(e.target);
-// }
-
-startBtn.addEventListener("click", function (e) {
-  gameStart.style.display = "none";
-  gameBoard.style.display = "grid";
-});
 // function toolSelect() {}
 
-gameBoard.addEventListener("click", function (e) {
+function gameBoardtoStorage(e) {
   if (
     e.target.className !== "blue" &&
     e.target.className !== "white" &&
     e.target.className !== "game-board"
   ) {
-    let compStyle = window.getComputedStyle(e.target);
-    let bcCol = compStyle.getPropertyValue("background-color");
-    storage.style.backgroundColor = bcCol;
+    const targetCls = e.target.getAttribute("class");
+    const currentStoreCls = storage.className;
+
+    storage.classList.replace(currentStoreCls, targetCls);
+    storage.style.width = "30px";
+    storage.style.height = "30px";
+
     e.target.setAttribute("class", "blue");
   }
-});
+}
 
 storage.addEventListener("click", function (e) {
-  const compBC = window.getComputedStyle(e.target);
-  const currBc = compBC.getPropertyValue("background-color");
-  gameBoard.addEventListener("click", function (e) {
-    if (
-      e.target.className !== "game-board" &&
-      currBc !== "rgb(255, 255, 255)"
-    ) {
-      e.target.style.backgroundColor = currBc;
-    }
-  });
+  gameBoard.removeEventListener("click", gameBoardtoStorage);
+  gameBoard.addEventListener("click", storageToBox);
 });
+
+function storageToBox(e) {
+  if (e.target.className !== "game-board" && storage.className !== "storage") {
+    e.target.setAttribute("class", storage.className);
+    storage.setAttribute("class", "storage");
+  }
+  this.removeEventListener("click", arguments.callee);
+  gameBoard.addEventListener("click", gameBoardtoStorage);
+}
