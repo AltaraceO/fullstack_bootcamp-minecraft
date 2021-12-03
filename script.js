@@ -70,14 +70,14 @@ function createBox(cls) {
   let box = document.createElement("div");
   box.classList.add(cls);
   gameBoard.appendChild(box);
-  box.addEventListener("click", clickFunc);
+  // box.addEventListener("click", clickFunc);
 }
 
-function clickFunc(e) {
-  e.target.setAttribute("class", "colors.blue");
-  console.log(e);
-  console.dir(e.target);
-}
+// function clickFunc(e) {
+//   e.target.setAttribute("class", "colors.blue");
+//   console.log(e);
+//   console.dir(e.target);
+// }
 
 startBtn.addEventListener("click", function (e) {
   gameStart.style.display = "none";
@@ -85,12 +85,28 @@ startBtn.addEventListener("click", function (e) {
 });
 // function toolSelect() {}
 
-// const selectedItem = document.querySelector("#selected-item");
+gameBoard.addEventListener("click", function (e) {
+  if (
+    e.target.className !== "blue" &&
+    e.target.className !== "white" &&
+    e.target.className !== "game-board"
+  ) {
+    let compStyle = window.getComputedStyle(e.target);
+    let bcCol = compStyle.getPropertyValue("background-color");
+    storage.style.backgroundColor = bcCol;
+    e.target.setAttribute("class", "blue");
+  }
+});
 
-// gameBoard.addEventListener("click", function skyClick(e) {
-//   if (e.target.className !== "blue" && e.target.className !== "white") {
-//     const newClass = e.target.className;
-//     selectedItem.setAttribute("class", newClass);
-//     e.target.setAttribute("class", "blue");
-//   }
-// });
+storage.addEventListener("click", function (e) {
+  const compBC = window.getComputedStyle(e.target);
+  const currBc = compBC.getPropertyValue("background-color");
+  gameBoard.addEventListener("click", function (e) {
+    if (
+      e.target.className !== "game-board" &&
+      currBc !== "rgb(255, 255, 255)"
+    ) {
+      e.target.style.backgroundColor = currBc;
+    }
+  });
+});

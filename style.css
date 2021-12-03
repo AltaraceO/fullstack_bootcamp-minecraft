@@ -30,7 +30,7 @@
 .storage {
   height: 30px;
   width: 30px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   background-color: white;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .brown {
-  background-color: rgb(189, 135, 92);
+  background: url(/utilities/images/mineDirt.png);
 }
 
 .darkbrown {
