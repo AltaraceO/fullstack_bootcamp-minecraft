@@ -17,6 +17,9 @@ const colors = {
   storage: "storage",
 };
 
+let currentTool;
+let currentBtn;
+
 function createGameDisplay() {
   let matrix = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -77,77 +80,92 @@ function createGameDisplay() {
 }
 
 function minecraftMain() {
-  createGameDisplay();
-
   startBtn.addEventListener("click", function (e) {
     gameStart.style.display = "none";
     gameBoard.style.display = "grid";
+    createGameDisplay();
   });
   threeBtns.addEventListener("click", checkTool);
 
   storage.addEventListener("click", function (e) {
-    turnOffPrevEvent(currentEvent);
+    removeBackground();
+    turnOffPrevEvent(currentTool);
     gameBoard.addEventListener("click", storageToBox);
   });
 }
 minecraftMain();
 
-let currentEvent;
-
 function checkTool(e) {
+  let materialFunc;
+  let toolButton;
+
   switch (e.target.className) {
     case "pickaxe tool":
-      turnOffPrevEvent(currentEvent);
-      gameEvnListener(stoneFunc);
-      console.log("pickaxe");
+      materialFunc = stoneFunc;
+      toolButton = e.target;
       break;
 
     case "shovel tool":
-      turnOffPrevEvent(currentEvent);
-      gameEvnListener(dirtFunc);
-      console.log("shovel");
+      materialFunc = dirtFunc;
+      toolButton = e.target;
       break;
 
     case "axe tool":
-      turnOffPrevEvent(currentEvent);
-      gameEvnListener(treeFunc);
-      console.log("axe");
+      materialFunc = treeFunc;
+      toolButton = e.target;
       break;
-
-    // case "storage":
-    //   storeEvent();
-    //   console.log("storage");
-    //   break;
 
     default:
       break;
   }
+
+  toolSwitcher(materialFunc);
+  backgroundSwitcher(toolButton);
 }
 
 function turnOffPrevEvent(curr) {
   gameBoard.removeEventListener("click", curr);
 }
 
-function gameEvnListener(material) {
+function removeBackground() {
+  if (currentBtn !== undefined) currentBtn.classList.remove("white-back");
+}
+function backgroundSwitcher(item) {
+  removeBackground();
+  item.classList.add("white-back");
+  currentBtn = item;
+}
+
+function toolSwitcher(material) {
+  turnOffPrevEvent(currentTool);
   gameBoard.addEventListener("click", material);
-  currentEvent = material;
+  currentTool = material;
 }
 
 function stoneFunc(e) {
+  const tool = pickaxe;
   if (e.target.className === "gray") {
     pickFunc(e);
+  } else {
+    wrongMaterial(e, tool);
   }
 }
 
 function dirtFunc(e) {
+  const tool = shovel;
   if (e.target.className === "brown") {
     pickFunc(e);
+  } else {
+    wrongMaterial(e, tool);
   }
 }
 
 function treeFunc(e) {
+  const tool = axe;
   if (e.target.className === "darkbrown" || e.target.className === "green") {
     pickFunc(e);
+  } else {
+    wrongMaterial(e, tool);
   }
 }
 
@@ -161,6 +179,15 @@ function pickFunc(e) {
 
   e.target.setAttribute("class", "blue");
   this.removeEventListener("click", arguments.callee);
+}
+
+function wrongMaterial(e, tool) {
+  if (e.target.className !== "blue" && e.target.className !== "white") {
+    tool.classList.add("red-shadow");
+    setTimeout(() => {
+      tool.classList.remove("red-shadow");
+    }, 100);
+  }
 }
 
 // storage box functions --------------------------------
