@@ -17,8 +17,11 @@ const colors = {
   storage: "storage",
 };
 
+const materialArray = [];
 let currentTool;
 let currentBtn;
+
+minecraftMain();
 
 function createGameDisplay() {
   let matrix = [
@@ -93,7 +96,6 @@ function minecraftMain() {
     gameBoard.addEventListener("click", storageToBox);
   });
 }
-minecraftMain();
 
 function checkTool(e) {
   let materialFunc;
@@ -173,7 +175,10 @@ function pickFunc(e) {
   const targetCls = e.target.getAttribute("class");
   const currentStoreCls = storage.className;
 
-  storage.classList.replace(currentStoreCls, targetCls);
+  materialArray.push(targetCls);
+
+  console.log(materialArray);
+  storage.classList.replace(currentStoreCls, materialArray[0]);
   storage.style.width = "30px";
   storage.style.height = "30px";
 
@@ -193,9 +198,19 @@ function wrongMaterial(e, tool) {
 // storage box functions --------------------------------
 
 function storageToBox(e) {
+  if (materialArray.length === 1) {
+    materialArray.pop();
+  }
   if (e.target.className !== "game-board" && storage.className !== "storage") {
+    console.log(materialArray);
     e.target.setAttribute("class", storage.className);
-    storage.setAttribute("class", "storage");
+
+    upDateStorage();
   }
   this.removeEventListener("click", arguments.callee);
+}
+
+function upDateStorage() {
+  let currentMaterial = materialArray.pop();
+  storage.setAttribute("class", currentMaterial || "storage");
 }

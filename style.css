@@ -57,10 +57,18 @@
   justify-content: center;
 }
 
+.logo {
+  width: 400px;
+  height: 70px;
+  background: url(/utilities/images/Minecraft_logo.png) no-repeat center
+    center/cover;
+  /* background-color: blue; */
+}
+
 .game-start {
   height: 100%;
   width: 100%;
-  background-color: lightsalmon;
+  background: url(/utilities/images/mineDirt.png);
   display: flex;
   justify-content: center;
   align-items: center;
