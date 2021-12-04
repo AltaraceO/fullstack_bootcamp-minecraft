@@ -175,12 +175,13 @@ function pickFunc(e) {
   const targetCls = e.target.getAttribute("class");
   const currentStoreCls = storage.className;
 
-  materialArray.push(targetCls);
+  materialArray.unshift(targetCls);
 
   console.log(materialArray);
+  // storage.classList.replace(currentStoreCls, targetCls);
   storage.classList.replace(currentStoreCls, materialArray[0]);
-  storage.style.width = "30px";
-  storage.style.height = "30px";
+  storage.style.width = "50px";
+  storage.style.height = "50px";
 
   e.target.setAttribute("class", "blue");
   this.removeEventListener("click", arguments.callee);
@@ -199,7 +200,7 @@ function wrongMaterial(e, tool) {
 
 function storageToBox(e) {
   if (materialArray.length === 1) {
-    materialArray.pop();
+    materialArray.shift();
   }
   if (e.target.className !== "game-board" && storage.className !== "storage") {
     console.log(materialArray);

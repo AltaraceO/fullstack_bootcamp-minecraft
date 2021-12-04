@@ -4,8 +4,19 @@
   box-sizing: border-box;
 }
 
+:root {
+  --outer-bottom: #535353;
+  --inner-top: #808080;
+  --outer-top: #dbdbdb;
+  --inner-bottom: #dadada;
+  --background: #008080;
+  --header: #00007f;
+  --background-grey: #c0c0c0;
+}
+
 .game-container {
   display: flex;
+  background-color: beige;
 }
 
 .nav-container {
@@ -18,18 +29,25 @@
   flex-direction: column;
   gap: 10px;
   background-color: rgb(82, 77, 77);
+  background: url(/utilities/images/sandstone.png);
+}
+
+.three-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 50px;
 }
 
 .tool {
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
+  height: 70px;
+  width: 70px;
+  border: 5px solid black;
 }
 .white-back {
   background-color: white !important;
 }
 .red-shadow {
-  /* background-color: red !important; */
   box-shadow: 0 0 10px 10px red;
 }
 .pickaxe {
@@ -45,8 +63,8 @@
 }
 
 .storage {
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   background-color: white;
 }
 
@@ -57,14 +75,6 @@
   justify-content: center;
 }
 
-.logo {
-  width: 400px;
-  height: 70px;
-  background: url(/utilities/images/Minecraft_logo.png) no-repeat center
-    center/cover;
-  /* background-color: blue; */
-}
-
 .game-start {
   height: 100%;
   width: 100%;
@@ -72,6 +82,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.logo {
+  width: 400px;
+  height: 70px;
+  background: url(/utilities/images/Minecraft_logo.png) no-repeat center
+    center/cover;
+}
+.start-button {
+  background: var(--background-grey);
+  border: 2px solid;
+  border-top-color: var(--outer-top);
+  border-left-color: var(--outer-top);
+  border-right-color: var(--outer-bottom);
+  border-bottom-color: var(--outer-bottom);
+  padding: 10px 20px;
 }
 
 .game-board {
