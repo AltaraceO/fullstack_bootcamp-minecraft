@@ -3,18 +3,15 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 :root {
   --outer-bottom: #535353;
   --outer-top: #dbdbdb;
   --background-grey: #c0c0c0;
 }
-
 .game-container {
   display: flex;
   background-color: beige;
 }
-
 .nav-container {
   float: right;
   min-width: 150px;
