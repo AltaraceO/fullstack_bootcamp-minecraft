@@ -83,41 +83,54 @@ function minecraftMain() {
     gameStart.style.display = "none";
     gameBoard.style.display = "grid";
   });
-  // gameBoard.addEventListener("click", gameBoardtoStorage);
+  threeBtns.addEventListener("click", checkTool);
+
+  storage.addEventListener("click", function (e) {
+    turnOffPrevEvent(currentEvent);
+    gameBoard.addEventListener("click", storageToBox);
+  });
 }
 minecraftMain();
-
-// function toolSelect() {}
-
-threeBtns.addEventListener("click", checkTool);
 
 let currentEvent;
 
 function checkTool(e) {
-  // console.log(e.target.className);
   switch (e.target.className) {
     case "pickaxe tool":
+      turnOffPrevEvent(currentEvent);
       gameEvnListener(stoneFunc);
+      console.log("pickaxe");
+      break;
 
-      break;
     case "shovel tool":
+      turnOffPrevEvent(currentEvent);
       gameEvnListener(dirtFunc);
-      // gameBoard.removeEventListener("click", stoneFunc);
+      console.log("shovel");
       break;
+
     case "axe tool":
+      turnOffPrevEvent(currentEvent);
       gameEvnListener(treeFunc);
+      console.log("axe");
       break;
+
+    // case "storage":
+    //   storeEvent();
+    //   console.log("storage");
+    //   break;
 
     default:
       break;
   }
 }
 
+function turnOffPrevEvent(curr) {
+  gameBoard.removeEventListener("click", curr);
+}
+
 function gameEvnListener(material) {
   gameBoard.addEventListener("click", material);
-  // currentEvent = material;
-  // console.log(currentEvent);
-  // console.log(typeof currentEvent);
+  currentEvent = material;
 }
 
 function stoneFunc(e) {
@@ -127,7 +140,6 @@ function stoneFunc(e) {
 }
 
 function dirtFunc(e) {
-  // gameBoard.removeEventListener("click", stoneFunc);
   if (e.target.className === "brown") {
     pickFunc(e);
   }
@@ -151,10 +163,7 @@ function pickFunc(e) {
   this.removeEventListener("click", arguments.callee);
 }
 
-storage.addEventListener("click", function (e) {
-  // gameBoard.removeEventListener("click", material);
-  gameBoard.addEventListener("click", storageToBox);
-});
+// storage box functions --------------------------------
 
 function storageToBox(e) {
   if (e.target.className !== "game-board" && storage.className !== "storage") {
@@ -162,5 +171,4 @@ function storageToBox(e) {
     storage.setAttribute("class", "storage");
   }
   this.removeEventListener("click", arguments.callee);
-  // gameBoard.addEventListener("click", gameBoardtoStorage);
 }
