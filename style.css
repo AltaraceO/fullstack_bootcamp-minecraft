@@ -37,9 +37,14 @@
   width: 70px;
   border: 5px solid black;
 }
+.tool:hover {
+  border: 5px #26c8ad dashed;
+}
+
 .white-back {
   background-color: white !important;
 }
+
 .red-shadow {
   box-shadow: 0 0 10px 10px red;
 }
@@ -60,6 +65,10 @@
   width: 50px;
   background-color: white;
 }
+
+/* .storage:hover {
+  border: 4px solid rgb(226, 226, 181);
+} */
 
 .gameboard-container {
   width: 100%;
